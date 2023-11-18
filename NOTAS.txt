@@ -1,0 +1,17 @@
+ECOMMERCE VANYLA
+
+ADMINISTRADOR
+    Descargar y depurar AdminLTE.
+    Crear DB.
+    Login de usuario con AdminLTE.
+    Administrador de usuarios.
+    Administrador de productos.
+    Reporte de ventas (vemos).
+
+TIENDA
+    Menu superior.
+    Productos home.
+    Detalles del producto.
+    Carrito de compras.
+    Pasarela de pagos.
+    factura.

@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+session_start();
+
+// Verificar si la variable de sesión 'user_id' esta establecida
+if (!isset($_SESSION['user_id'])) {
+    
+    header('Location: index.php');
+    exit();
+}
+
+?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>VanylaCakes | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"

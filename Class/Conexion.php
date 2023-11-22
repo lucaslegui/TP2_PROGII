@@ -23,10 +23,10 @@ class Conexion
     {
         try {
         $this->db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS); 
-        echo "conectada";     
+        echo "Base de datos conectada";     
         } catch (Exception $e) {
         // echo $e->getFile();
-        echo "No se puede conectar a la base de datos";
+        echo "No se puede conectar con la base de datos";
         die; //frena todo php, corta toda la ejecucion tambien le podemos agregar sus ultimas palavbras die("nohay mas php");
         }
     }

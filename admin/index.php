@@ -18,8 +18,10 @@ if (isset($_REQUEST['login'])) {
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     $_SESSION['user_id'] = $user['id_user'];
+    $_SESSION['user_name'] = $user['name_user'];
     header('Location: panel.php');
     exit();
+
   } else {
     $error = "<script>$(document).ready(function() { $('#errorToast').toast('show'); });</script>";
     // activa el toast
@@ -28,10 +30,8 @@ if (isset($_REQUEST['login'])) {
 
 ?>
 
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es_AR">
 
 <head>
   <meta charset="utf-8">

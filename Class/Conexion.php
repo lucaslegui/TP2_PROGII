@@ -37,4 +37,3 @@ class Conexion
         return $this->db;
     }
 }
-

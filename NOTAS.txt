@@ -15,3 +15,26 @@ TIENDA
     Carrito de compras.
     Pasarela de pagos.
     factura.
+
+
+    <?php
+//eliminar usuario por id
+include_once("../Class/Conexion.php");
+$conexion = new Conexion();
+$pdo = $conexion->getConexion();
+
+if (isset($_GET['accion']) && $_GET['accion'] === 'delete' && isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $stmt = $pdo->prepare("DELETE FROM users WHERE id_user = :id");
+
+    $result = $stmt->execute(['id' => $id]);
+
+    if ($result) {
+        echo '<script>window.location.href = "panel.php?modulo=users";</script>';
+        exit();
+    } else {
+
+        echo "Error al eliminar el usuario.";
+    }
+}
+?>

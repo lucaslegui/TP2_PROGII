@@ -9,11 +9,12 @@ $stmt->execute();
 
 <section id="productos">
     <h2>Podes conocer y comprar nuestros productos acá</h2>
-    <div>
+    <div class="row">
         <?php
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<div class='card' style='width: 18rem;'>";
-            echo "<img src='./admin/" . $row['image_product'] . "' class='card-img-top' alt='...'>";
+            echo "<div class='col-lg-4 col-md-6 col-sm-12 mb-4'>";
+            echo "<div class='card'>";
+            echo "<img src='./admin/" . $row['image_product'] . "' class='card-img-top'>";
             echo "<div class='card-body'>";
             echo "<h5 class='card-title'>" . $row['name_product'] . "</h5>";
             echo "<p class='card-text'>" . $row['description_product'] . "</p>";
@@ -21,11 +22,8 @@ $stmt->execute();
             echo "<a href='#' class='btn btn-primary'>Agregar al carrito</a>";
             echo "</div>";
             echo "</div>";
+            echo "</div>";
         }
         ?>
-</div>
-
-
+    </div>
 </section>
-
-

@@ -5,7 +5,7 @@ $conexion = new Conexion();
 $pdo = $conexion->getConexion();
 
 $id = $_GET['id'];
-$stmt = $pdo->prepare("SELECT id_product, name_product, category_product, description_product, image_product, price_product, exist_product FROM products WHERE id_product = :id;");
+$stmt = $pdo->prepare("SELECT id_product, name_product, category_product, description_product, made_of_product, image_product, price_product, exist_product FROM products WHERE id_product = :id;");
 $stmt->execute(['id' => $id]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -14,6 +14,7 @@ if (isset($_POST['guardar'])) {
     $name_product = $_POST['name_product'];
     $category_product = $_POST['category_product'];
     $description_product = $_POST['description_product'];
+    $made_of_product = $_POST['made_of_product'];
     $price_product = $_POST['price_product'];
     $exist_product = $_POST['exist_product'];
     $image_product = $_POST['image_product_actual']; // 
@@ -32,8 +33,8 @@ if (isset($_POST['guardar'])) {
     }
 
     // actualizar la base de datos
-    $stmt = $pdo->prepare("UPDATE products SET name_product = :name_product, category_product = :category_product, description_product = :description_product, image_product = :image_product, price_product = :price_product, exist_product = :exist_product WHERE id_product = :id;");
-    $stmt->execute(['name_product' => $name_product, 'category_product' => $category_product, 'description_product' => $description_product, 'image_product' => $image_product, 'price_product' => $price_product, 'exist_product' => $exist_product, 'id' => $id]);
+    $stmt = $pdo->prepare("UPDATE products SET name_product = :name_product, category_product = :category_product, description_product = :description_product, made_of_product = :made_of_product, image_product = :image_product, price_product = :price_product, exist_product = :exist_product WHERE id_product = :id;");
+    $stmt->execute(['name_product' => $name_product, 'category_product' => $category_product, 'description_product' => $description_product, 'made_of_product' => $made_of_product, 'image_product' => $image_product, 'price_product' => $price_product, 'exist_product' => $exist_product, 'id' => $id]);
 
 
     echo '<script>window.location.href = "panel.php?modulo=products";</script>';
@@ -80,6 +81,10 @@ if (isset($_POST['guardar'])) {
                                 <div class="form-group">
                                     <label for="description_product">Descripcion</label>
                                     <input type="text" class="form-control" name="description_product" id="description_product" placeholder="Descripcion" value="<?php echo $row['description_product'] ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="made_of_product">Ingredientes</label>
+                                    <input type="text" class="form-control" name="made_of_product" id="made_of_product" placeholder="Ingredientes" value="<?php echo $row['made_of_product'] ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="image_product">Imagen</label>

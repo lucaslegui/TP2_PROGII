@@ -1,0 +1,123 @@
+/* reset css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* primary colors declaration variable */
+:root {
+  --color-1: #ED86A3;
+  --color-2: #cdb4db;
+  --color-3: #ffc8dd;
+  --color-4: #ffafcc;
+  --color-5: #bde0fe;
+  --color-6: #a2d2ff;
+  --color-7: #275ca8;
+}
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background: #FFFAF0;
+}
+
+header {
+  width: 100%;
+  background: var(--color-5);
+  padding: 10px;
+}
+.topColor {
+  background: black;
+  color: white;
+}
+
+.banner {
+  /* max-width: 900px; */
+  background-color: var(--color-4);
+  /* padding: 20px 0; */
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* banner hover and animation */
+.banner:hover {
+  background-color: var(--color-2);
+  padding: 20px 0; 
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.banner img {
+   max-width: 300px;
+  top: 0;
+  left: 0;
+}
+
+
+.offer-text {
+  padding: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.fas.fa-shopping-cart {
+  color: var(--color-6);
+}
+
+#btnHome {
+  height: 200px;
+  background-color: var(--color-2);
+  margin-bottom: 60px;
+}
+
+
+#formulario{
+  height: 100vh;
+  background-color: var(--color-1);
+  margin-bottom: 60px;
+}
+
+#productos {
+  margin-top: 20px; /* o el valor que desees */
+}
+
+#compras{
+  margin-top: 60px;
+  background-image: url(/vanyla/views/resources/img/panadera.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  margin-bottom: 60px;
+  cursor: pointer;
+
+}
+
+#compras .titulo-visita{
+  color: var(--color-5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* compras hover */
+#compras:hover{
+background-color: #ED86A3 !important;
+}
+
+/* Media querys */
+@media only screen and (max-width: 768px) {
+  .offer-text {
+      font-size: 1.5rem;
+  }
+}

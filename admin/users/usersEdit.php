@@ -15,7 +15,6 @@ if (isset($_POST['guardar'])) {
     echo '<script>window.location.href = "panel.php?modulo=users";</script>';
     exit();
 }
-
 ?>
 
 <div class="content-wrapper">

@@ -4,6 +4,7 @@ include_once("../Class/Conexion.php");
 $conexion = new Conexion();
 $pdo = $conexion->getConexion();
 
+//eliminar usuario
 if (isset($_GET['accion']) && $_GET['accion'] === 'delete' && isset($_GET['id'])) {
     $id = $_GET['id'];
     $stmt = $pdo->prepare("DELETE FROM users WHERE id_user = :id");

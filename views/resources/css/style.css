@@ -115,6 +115,14 @@ header {
 background-color: #ED86A3 !important;
 }
 
+/* imagenes de los productos */
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 /* Media querys */
 @media only screen and (max-width: 768px) {
   .offer-text {

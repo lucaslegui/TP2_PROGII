@@ -12,8 +12,10 @@ switch ($view) {
         $template->loadView('home');
         break;
     case 'productos':
-        $template->loadView('productos');
+        $tipoFiltro = $_GET['tipo'] ?? 'all';
+        $template->loadView('productos', $tipoFiltro);
         break;
+       
     case 'about':
         $template->loadView('about');
         break;

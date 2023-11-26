@@ -16,9 +16,11 @@ $listaProductos = $productos->obtenerProductos($tipoFiltro);
     <p>Te mostramos todos los productos que tenemos disponibles para que puedas comprarlos y disfrutarlos en tu casa.</p>
 
     <!-- filtrar productos por categoria -->
-    <div class="filtro m-5">
-        <form action="index.php?page=productos#productos" method="GET">
-            <select name="tipo">
+    <div class="filtro">
+    <form action="index.php?page=productos#productos" method="GET" class="row g-3">
+        <div class="col-auto">
+            <label for="tipoSelect" class="visually-hidden">Tipo</label>
+            <select name="tipo" id="tipoSelect" class="form-select">
                 <option value="all">Todos</option>
                 <option value="tortas" <?php echo $tipoFiltro == 'tortas' ? 'selected' : ''; ?>>Tortas</option>
                 <option value="pan" <?php echo $tipoFiltro == 'pan' ? 'selected' : ''; ?>>Panes</option>
@@ -26,10 +28,14 @@ $listaProductos = $productos->obtenerProductos($tipoFiltro);
                 <option value="galletas" <?php echo $tipoFiltro == 'galletas' ? 'selected' : ''; ?>>Galletas</option>
                 <option value="cupcakes" <?php echo $tipoFiltro == 'cupcakes' ? 'selected' : ''; ?>>Cupcakes</option>
             </select>
-            <input type="submit" value="Filtrar">
-            <input type="hidden" name="page" value="productos">
-        </form>
-    </div>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Filtrar</button>
+        </div>
+        <input type="hidden" name="page" value="productos">
+    </form>
+</div>
+
 
     <div class="row">
         <?php

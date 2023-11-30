@@ -12,16 +12,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="index.php" class="nav-link active btn" aria-current="page" data-load="home">Home</a>
+                        <a href="index.php?page=home" class="nav-link btn <?php echo $view === 'home' ? 'active' : ''; ?>" data-load="home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.php?page=productos" class="nav-link btn">Poductos</a>
+                        <a href="index.php?page=productos" class="nav-link btn <?php echo $view === 'productos' ? 'active' : ''; ?>" data-load="productos">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.php?page=about" class="nav-link btn" data-load="about">Nuestra Cocina</a>
+                        <a href="index.php?page=about" class="nav-link btn <?php echo $view === 'about' ? 'active' : ''; ?>" data-load="about">Nuestra Cocina</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.php?page=contacto" class="nav-link btn" data-load="contacto">Contacto</a>
+                        <a href="index.php?page=contacto" class="nav-link btn <?php echo $view === 'contacto' ? 'active' : ''; ?>" data-load="contacto">Contacto</a>
                     </li>
                 </ul>
             </div>
@@ -44,12 +44,31 @@
             </div>
         </div>
         <!-- carrito de compras -->
+        <!-- Icono del carrito de compras -->
         <div class="mx-5">
-            <a href="#" class="text-warning">
-            <i class="fa-solid fa-cart-shopping fa-lg" style="color: #fa00b7;"></i>
+            <a href="#" class="text-warning" data-bs-toggle="modal" data-bs-target="#carritoModal">
+                <i class="fa-solid fa-cart-shopping fa-lg" style="color: #fa00b7;"></i>
             </a>
         </div>
 
+        <!-- Modal del Carrito de Compras -->
+        <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Aquí irá el contenido del carrito -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Finalizar Compra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
     <marquee>
         <h4>Envios sin cargo a CABA y GBA en compras mayores a $8.000</h4>

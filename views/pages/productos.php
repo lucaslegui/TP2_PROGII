@@ -1,6 +1,7 @@
 <?php
 include_once("Class/Conexion.php");
 include_once("Class/Productos.php");
+include_once("Class/Carrito.php");
 
 $conexion = new Conexion();
 $pdo = $conexion->getConexion();
@@ -17,24 +18,24 @@ $listaProductos = $productos->obtenerProductos($tipoFiltro);
 
     <!-- filtrar productos por categoria -->
     <div class="filtro">
-    <form action="index.php?page=productos#productos" method="GET" class="row g-3">
-        <div class="col-auto">
-            <label for="tipoSelect" class="visually-hidden">Tipo</label>
-            <select name="tipo" id="tipoSelect" class="form-select">
-                <option value="all">Todos</option>
-                <option value="tortas" <?php echo $tipoFiltro == 'tortas' ? 'selected' : ''; ?>>Tortas</option>
-                <option value="pan" <?php echo $tipoFiltro == 'pan' ? 'selected' : ''; ?>>Panes</option>
-                <option value="brownie" <?php echo $tipoFiltro == 'brownie' ? 'selected' : ''; ?>>Brownies</option>
-                <option value="galletas" <?php echo $tipoFiltro == 'galletas' ? 'selected' : ''; ?>>Galletas</option>
-                <option value="cupcakes" <?php echo $tipoFiltro == 'cupcakes' ? 'selected' : ''; ?>>Cupcakes</option>
-            </select>
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">Filtrar</button>
-        </div>
-        <input type="hidden" name="page" value="productos">
-    </form>
-</div>
+        <form action="index.php?page=productos#productos" method="GET" class="row g-3">
+            <div class="col-auto">
+                <label for="tipoSelect" class="visually-hidden">Tipo</label>
+                <select name="tipo" id="tipoSelect" class="form-select">
+                    <option value="all">Todos</option>
+                    <option value="tortas" <?php echo $tipoFiltro == 'tortas' ? 'selected' : ''; ?>>Tortas</option>
+                    <option value="pan" <?php echo $tipoFiltro == 'pan' ? 'selected' : ''; ?>>Panes</option>
+                    <option value="brownie" <?php echo $tipoFiltro == 'brownie' ? 'selected' : ''; ?>>Brownies</option>
+                    <option value="galletas" <?php echo $tipoFiltro == 'galletas' ? 'selected' : ''; ?>>Galletas</option>
+                    <option value="cupcakes" <?php echo $tipoFiltro == 'cupcakes' ? 'selected' : ''; ?>>Cupcakes</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Filtrar</button>
+            </div>
+            <input type="hidden" name="page" value="productos">
+        </form>
+    </div>
 
 
     <div class="row">
@@ -47,7 +48,10 @@ $listaProductos = $productos->obtenerProductos($tipoFiltro);
             echo "<h5 class='card-title'>" . $producto['name_product'] . "</h5>";
             echo "<p class='card-text text-descripcion'>" . $producto['description_product'] . "</p>";
             echo "<p class='card-text text-precio'>$" . $producto['price_product'] . "</p>";
-            echo "<a href='#' class='btn btn-primary'>Agregar al carrito</a>";
+            echo "<div class='input-group mb-3'>";
+            echo "<input type='number' class='form-control' min='1' max='" . $producto['exist_product'] . "' value='1' id='cantidad-" . $producto['id_product'] . "'>";
+            echo "<button class='btn btn-primary agregar-carrito' data-id='" . $producto['id_product'] . "' onclick='agregarAlCarrito(" . $producto['id_product'] . ", document.getElementById(\"cantidad-" . $producto['id_product'] . "\").value)'>Agregar al carrito</button>";
+            echo "</div>";
             echo " <button type='button' class='btn btn-secondary' data-bs-toggle='modal' data-bs-target='#modalDetalleProducto-" . $producto['id_product'] . "'>Detalles</button>";
             echo "</div>";
             echo "</div>";

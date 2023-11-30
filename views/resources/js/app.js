@@ -1,38 +1,59 @@
-    // // Función para cargar vistas dinámicamente
-    // function loadView(viewName) {
-    //     fetch('./views/' + viewName + '.php')
-    //     .then(response => {
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         return response.text();
-    //     })
-    //     .then(data => {
-    //         document.getElementById('contenidoDinamico').innerHTML = data;
-    //     })
-    //     .catch(error => {
-    //         console.error("Error cargando " + viewName + ":", error);
-    //     });
-    // }
+//mostrar los links activos segun la pagina cargada
 
-    // // Agrega un listener a cada botón
-    // document.querySelectorAll('[data-load]').forEach(button => {
-    //     button.addEventListener('click', function() {
-    //         const viewName = button.getAttribute('data-load');
-    //         loadView(viewName);
-    //     });
-    // });
-
-    // //prevenir la no carga
-
-    // document.body.addEventListener('click', function(e) {
-    //     const target = e.target;
+document.addEventListener('DOMContentLoaded', (event) => {
     
-    //     // Verifica si el elemento clickeado (o alguno de sus ancestros) tiene el atributo data-load
-    //     let loadButton = target.closest('[data-load]');
-    //     if (loadButton) {
-    //         const viewName = loadButton.getAttribute('data-load');
-    //         loadView(viewName);
-    //     }
-    // });
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page') || 'home';
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+       
+        if (link.dataset.load === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+});
+
+
+
+//carrito NO ANDA
+
+
+document.addEventListener('DOMContentLoaded', () => {
+   
+    document.querySelectorAll('.btn.btn-primary').forEach(button => {
+        button.addEventListener('click', function() {
+            let idProducto = this.getAttribute('data-id');
+            let cantidad = document.getElementById('cantidad-' + idProducto).value;
+            agregarAlCarrito(idProducto, cantidad);
+        });
+    });
+});
+
+
+function agregarAlCarrito(idProducto, cantidad) {
+    // AJAX
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'Class/Carrito.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function() {
+        if (this.status === 200) {
+            
+            actualizarCarritoModal(this.responseText);
+        }
+    };
+
+   
+    xhr.send('id=' + idProducto + '&cantidad=' + cantidad);
+}
+
+//actualizar el contenido del modal del carrito
+function actualizarCarritoModal(response) {
     
+    var modalBody = document.querySelector('#carritoModal .modal-body');
+    if (modalBody) {
+        modalBody.innerHTML = response;
+    }
+}

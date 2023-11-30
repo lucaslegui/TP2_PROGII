@@ -24,16 +24,16 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                        <a href="/TP1_PROGII/app/index.php" class="nav-link active btn" aria-current="page" data-load="home">Home</a
+                        <a href="#" class="nav-link active btn" aria-current="page" data-load="home">Home</a>
                         </li>
                         <li>
-                        <a href="/TP1_PROGII/app/views/productos.php" class="nav-link btn" >Poductos</a>
+                        <a href="#" class="nav-link btn" >Poductos</a>
                         </li>
                         <li>
-                        <a href="/TP1_PROGII/app/views/about.php" class="nav-link btn" data-load="about">Nuestra Cocina</a>
+                        <a href="#" class="nav-link btn" data-load="about">Nuestra Cocina</a>
                         </li>
                         <li>
-                        <a href="/TP1_PROGII/app/views/contacto.php" class="nav-link btn" data-load="contacto">Contacto</a>
+                        <a href="#" class="nav-link btn" data-load="contacto">Contacto</a>
                         </li>
                     </ul>
                 </div>

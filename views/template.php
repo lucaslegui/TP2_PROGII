@@ -9,20 +9,22 @@
     <!-- <link rel="stylesheet" href="/TP1_PROGII/app/resources/css/bootstrap.css"> -->
     <!-- CSS -->
     <link rel="stylesheet" href="views/resources/css/style.css">
+    <!-- adminLTE -->
+    <link rel="stylesheet" href="admin/plugins/fontawesome-free/css/all.min.css">
     <title>Vanyla Cakes</title>
 </head>
 
 <body>
-    
+
     <?php include "views/modules/header.php"; ?>
 
-        <main class="container">
+    <main class="container">
 
-            <?php include $pageContent; ?>
+        <?php include $pageContent; ?>
 
-        </main>
-        
-   
+    </main>
+
+
     <?php include "views/modules/footer.php"; ?>
 
 
@@ -33,5 +35,7 @@
     <!-- fontawesome script -->
     <script src="https://kit.fontawesome.com/167f6d5e62.js" crossorigin="anonymous"></script>
     <script src="views/resources/js/app.js"></script>
+    <!-- adminLTE -->
+
 
 </body>

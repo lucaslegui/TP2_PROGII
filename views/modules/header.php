@@ -60,7 +60,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- Aquí irá el contenido del carrito -->
+                        <?php
+                        if (isset($_SESSION['carrito'])) {
+                            echo $_SESSION['carrito'];
+                            var_dump($_SESSION['carrito']);
+                        }
+                        ?>
+                    
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

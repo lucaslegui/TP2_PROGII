@@ -1,7 +1,8 @@
 <?php
+
+include_once("Class/Carrito.php");
 include_once("Class/Conexion.php");
 include_once("Class/Productos.php");
-include_once("Class/Carrito.php");
 
 $conexion = new Conexion();
 $pdo = $conexion->getConexion();
@@ -50,7 +51,7 @@ $listaProductos = $productos->obtenerProductos($tipoFiltro);
             echo "<p class='card-text text-precio'>$" . $producto['price_product'] . "</p>";
             echo "<div class='input-group mb-3'>";
             echo "<input type='number' class='form-control' min='1' max='" . $producto['exist_product'] . "' value='1' id='cantidad-" . $producto['id_product'] . "'>";
-            echo "<button class='btn btn-primary agregar-carrito' data-id='" . $producto['id_product'] . "' onclick='agregarAlCarrito(" . $producto['id_product'] . ", document.getElementById(\"cantidad-" . $producto['id_product'] . "\").value)'>Agregar al carrito</button>";
+            echo "<button class='btn btn-primary agregar-carrito' data-id='" . $producto['id_product'] . "'>Agregar al carrito</button>";
             echo "</div>";
             echo " <button type='button' class='btn btn-secondary' data-bs-toggle='modal' data-bs-target='#modalDetalleProducto-" . $producto['id_product'] . "'>Detalles</button>";
             echo "</div>";

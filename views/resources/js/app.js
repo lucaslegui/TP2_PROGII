@@ -15,45 +15,38 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 
+//carrito con ajax
 
-
-//carrito NO ANDA
-
-
-document.addEventListener('DOMContentLoaded', () => {
-   
-    document.querySelectorAll('.btn.btn-primary').forEach(button => {
-        button.addEventListener('click', function() {
-            let idProducto = this.getAttribute('data-id');
-            let cantidad = document.getElementById('cantidad-' + idProducto).value;
-            agregarAlCarrito(idProducto, cantidad);
+document.addEventListener("DOMContentLoaded", function() {
+    var botonesAgregar = document.getElementsByClassName('agregar-carrito');
+    for (var i = 0; i < botonesAgregar.length; i++) {
+        botonesAgregar[i].addEventListener('click', function() {
+            var idProducto = this.getAttribute('data-id');
+            var cantidad = document.getElementById('cantidad-' + idProducto).value;
+            agregarAlCarritoAjax(idProducto, cantidad);
         });
-    });
+    }
 });
 
-
-function agregarAlCarrito(idProducto, cantidad) {
-    // AJAX
-    let xhr = new XMLHttpRequest();
+function agregarAlCarritoAjax(idProducto, cantidad) {
+    var xhr = new XMLHttpRequest();
     xhr.open('POST', 'Class/Carrito.php', true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function() {
-        if (this.status === 200) {
-            
-            actualizarCarritoModal(this.responseText);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
         }
     };
-
-   
     xhr.send('id=' + idProducto + '&cantidad=' + cantidad);
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            if (response.success) {
+                alert(response.message);
+                
+            }
+        }
+    };
+    
 }
 
-//actualizar el contenido del modal del carrito
-function actualizarCarritoModal(response) {
-    
-    var modalBody = document.querySelector('#carritoModal .modal-body');
-    if (modalBody) {
-        modalBody.innerHTML = response;
-    }
-}

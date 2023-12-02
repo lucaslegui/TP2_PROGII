@@ -8,7 +8,7 @@ $conexion = new Conexion();
 $pdo = $conexion->getConexion();
 $productos = new Productos($pdo);
 
-//enviar el tipo de filtro seleccionado a Productos
+//enviar el filtro a Productos
 $tipoFiltro = isset($_GET['tipo']) ? $_GET['tipo'] : 'all';
 $listaProductos = $productos->obtenerProductos($tipoFiltro);
 ?>
@@ -25,10 +25,11 @@ $listaProductos = $productos->obtenerProductos($tipoFiltro);
                 <select name="tipo" id="tipoSelect" class="form-select">
                     <option value="all">Todos</option>
                     <option value="tortas" <?php echo $tipoFiltro == 'tortas' ? 'selected' : ''; ?>>Tortas</option>
-                    <option value="pan" <?php echo $tipoFiltro == 'pan' ? 'selected' : ''; ?>>Panes</option>
                     <option value="brownie" <?php echo $tipoFiltro == 'brownie' ? 'selected' : ''; ?>>Brownies</option>
                     <option value="galletas" <?php echo $tipoFiltro == 'galletas' ? 'selected' : ''; ?>>Galletas</option>
+                    <option value="tartas" <?php echo $tipoFiltro == 'tartas' ? 'selected' : ''; ?>>Tartas</option>
                     <option value="cupcakes" <?php echo $tipoFiltro == 'cupcakes' ? 'selected' : ''; ?>>Cupcakes</option>
+                    <option value="pan" <?php echo $tipoFiltro == 'pan' ? 'selected' : ''; ?>>Panes</option>
                 </select>
             </div>
             <div class="col-auto">

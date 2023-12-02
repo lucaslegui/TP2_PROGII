@@ -1,10 +1,12 @@
 <?php
+// session_start();
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $idProducto = $_POST['id'];
+    $idProducto = $_POST['id_prduct'];
     $cantidad = $_POST['cantidad'];
 
     if (!isset($_SESSION['carrito'])) {
@@ -21,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 
-function generarRespuestaCarrito() {
-    $respuesta = '';
-    return $respuesta;
-}
+// function generarRespuestaCarrito() {
+//     $respuesta = '';
+//     return $respuesta;
+// }
